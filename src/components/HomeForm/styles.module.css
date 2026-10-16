@@ -1,0 +1,78 @@
+.taskForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: var(--text-default);
+	width: 100%;
+}
+
+input[type="text"] {
+	outline: 0;
+	background-color: transparent;
+	border: 2px solid transparent;
+	border-bottom: 2px solid var(--primary);
+	border-radius: 1rem;
+	color: var(--text-default);
+	text-align: center;
+	padding: .6rem;
+	font-size: 1.6rem;
+}
+
+.taskMessage {
+	font-weight: 300;
+	margin: 2rem 0;
+}
+
+.bold {
+	font-weight: 600;
+}
+
+.cycleMessage {
+	line-height: 100%;
+	margin-bottom: 1rem;
+}
+
+.cycles {
+	display: flex;
+	gap: .8rem;
+}
+
+.cycle {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+}
+
+.shortBreakTime {
+	background-color: var(--primary);
+}
+
+.workTime {
+	background-color: var(--warning);
+}
+
+.longBreakTime {
+	background-color: var(--info);
+}
+
+button[type="submit"] {
+	border: 0;
+	background-color: var(--primary);
+	color: var(--text-default);
+	padding: 10px 0;
+	width: 100%;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-top: 2rem;
+}
+
+button[type="submit"]:hover {
+	background-color: var(--primary-dark);
+}
+
+svg {
+	vertical-align: bottom;
+	width: 2.6rem;
+	height: 2.6rem;
+	color: var(--container-bg);
+}

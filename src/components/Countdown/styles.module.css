@@ -1,0 +1,5 @@
+.countdown {
+	color: var(--text-default);
+	font-weight: 200;
+	font-size: 10rem;
+}

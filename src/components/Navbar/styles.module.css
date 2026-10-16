@@ -1,0 +1,19 @@
+.navbar {
+	display: flex;
+	gap: 2rem;
+}
+
+.navItem {
+	background-color: var(--primary);
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+	color: var(--container-bg);
+}
+
+.navItem:hover {
+	background-color: var(--primary-dark);
+}
