@@ -4,6 +4,8 @@ import { useRef } from 'react';
 import { useAppContext, type TaskType } from '../../contexts/appContext';
 import { getNextCycleNumber, getNextCycleName } from '../../utils/getNextCycle';
 import { formatTime } from '../../utils/formatTime';
+import { Cycles } from '../Cycles';
+import { FormMessage } from '../FormMessage';
 
 export function HomeForm() {
 	const { appState, setAppState } = useAppContext();
@@ -13,7 +15,7 @@ export function HomeForm() {
 	// getting next cycle number
 	const nextCycle = getNextCycleNumber(appState.currentCycle);
 	// getting next cycle name
-	const nextCycleType = getNextCycleName(nextCycle);
+	const nextCycleName = getNextCycleName(nextCycle);
 
 	// submit handler
 	function handleSubmit(e: React.SubmitEvent) {
@@ -30,8 +32,8 @@ export function HomeForm() {
 		const newTask: TaskType = {
 			id: Date.now().toString(),
 			name: taskName,
-			duration: appState.config[nextCycleType],
-			type: nextCycleType,
+			duration: appState.config[nextCycleName],
+			type: nextCycleName,
 			startDate: Date.now(),
 			completeDate: null,
 			interruptDate: null,
@@ -65,22 +67,16 @@ export function HomeForm() {
 					ref={inputRef}
 				/>
 
-				<span className={styles.taskMessage}>Próximo intervalo é de <span className={styles.bold}>{appState.config[nextCycleType]}min</span></span>
+				{appState.activeTask === null ? 
+					<span className={styles.taskMessage}>Inicie seus estudos</span> 
+					: 
+					<FormMessage activeTask={appState.activeTask}/>
+				}
 
-				<span className={styles.cycleMessage}>Ciclos:</span>
-				<div className={styles.cycles}>
-					<div className={`${styles.cycle} ${styles.workTime}`}></div>
-					<div className={`${styles.cycle} ${styles.shortBreakTime}`}></div>
-					<div className={`${styles.cycle} ${styles.workTime}`}></div>
-					<div className={`${styles.cycle} ${styles.shortBreakTime}`}></div>
-					<div className={`${styles.cycle} ${styles.workTime}`}></div>
-					<div className={`${styles.cycle} ${styles.shortBreakTime}`}></div>
-					<div className={`${styles.cycle} ${styles.workTime}`}></div>
-					<div className={`${styles.cycle} ${styles.longBreakTime}`}></div>
-				</div>
+				<Cycles />
 
 				<button type='submit'>
-					<CirclePlay />
+					<CirclePlay size={26}/>
 				</button>
 			</form>
 		</>

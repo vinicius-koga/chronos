@@ -2,11 +2,9 @@ import styles from './styles.module.css';
 import { House, Moon, RotateCcwClock, Settings, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-type Theme = 'dark' | 'light';
-
 export function Navbar() {
 	// theme initial state
-	const [theme, setTheme] = useState<Theme>(() => {
+	const [theme, setTheme] = useState<'dark' | 'light'>(() => {
 		const savedTheme = localStorage.getItem('theme');
 		return savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : 'dark';
 	});
@@ -28,16 +26,16 @@ export function Navbar() {
 		<>
 			<div className={styles.navbar}>
 				<div className={styles.navItem}>
-					<House className={styles.svg} />
+					<House className={styles.svg} size={26}/>
 				</div>
 				<div className={styles.navItem}>
-					<RotateCcwClock />
+					<RotateCcwClock size={26}/>
 				</div>
 				<div className={styles.navItem}>
-					<Settings />
+					<Settings size={26}/>
 				</div>
 				<div className={styles.navItem} onClick={handleClick}>
-					{theme === 'dark' ? <Sun /> : <Moon />}
+					{theme === 'dark' ? <Sun size={26}/> : <Moon size={26}/>}
 				</div>
 			</div>
 		</>
